@@ -3,20 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Color Click</title>
+  <meta name="theme-color" content="#fefadf" />
+  <meta name="description" content="Espacio Creativo: una mini-experiencia visual que cambia el color del fondo con un clic, con paleta curada, atajos de teclado y persistencia local." />
+
+  <!-- Título y Open Graph / Twitter para previsualizaciones al compartir -->
+  <title>Espacio Creativo · Cambia el color con un clic</title>
+  <meta property="og:title" content="Espacio Creativo · Cambia el color con un clic" />
+  <meta property="og:description" content="Una mini-experiencia visual: toca el botón (o pulsa la barra espaciadora) y el fondo cambia de color. Paleta curada, atajos y persistencia local." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://espacio-creativo.vercel.app" />
+  <meta property="og:image" content="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'><rect width='1200' height='630' fill='%23fefadf'/><circle cx='300' cy='315' r='160' fill='%23dca15d'/><circle cx='600' cy='315' r='160' fill='%23bc6c25'/><circle cx='900' cy='315' r='160' fill='%235f6c37'/><text x='600' y='560' font-family='Helvetica,Arial,sans-serif' font-size='42' font-weight='700' fill='%23273617' text-anchor='middle'>Espacio Creativo</text></svg>" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Espacio Creativo · Cambia el color con un clic" />
+  <meta name="twitter:description" content="Una mini-experiencia visual interactiva: cambia el color de fondo con un clic o con la barra espaciadora." />
+  <meta name="twitter:image" content="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'><rect width='1200' height='630' fill='%23fefadf'/><circle cx='300' cy='315' r='160' fill='%23dca15d'/><circle cx='600' cy='315' r='160' fill='%23bc6c25'/><circle cx='900' cy='315' r='160' fill='%235f6c37'/><text x='600' y='560' font-family='Helvetica,Arial,sans-serif' font-size='42' font-weight='700' fill='%23273617' text-anchor='middle'>Espacio Creativo</text></svg>" />
+
+  <!-- Favicon SVG inline: tres círculos de la paleta, sin archivo extra -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%23fefadf'/><circle cx='20' cy='28' r='10' fill='%23dca15d'/><circle cx='44' cy='28' r='10' fill='%23bc6c25'/><circle cx='32' cy='44' r='10' fill='%235f6c37'/></svg>" />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="card">
-    <h1>Color Click</h1>
-    <p class="hint">Toca el botón para cambiar el color del fondo.</p>
+  <main class="card">
+    <h1>Espacio Creativo</h1>
+    <p class="subtitle">Una mini-experiencia visual: toca el botón —o pulsa <kbd>C</kbd> o <kbd>Espacio</kbd>— y deja que el color fluya.</p>
+
     <button id="color-btn" type="button" aria-label="Cambiar color">
       <span>Cambiar color</span>
     </button>
+
+    <!-- Vista previa de los próximos 5 colores (se actualiza en cada cambio) -->
+    <div class="preview" aria-label="Próximos colores">
+      <span class="preview-label">Próximos:</span>
+      <ul id="preview-list" class="preview-list"></ul>
+    </div>
+
     <p class="readout">
-      Color actual: <code id="color-readout">#fefadf</code>
+      <span class="readout-label">Color actual:</span>
+      <code id="color-readout">#fefadf</code>
+      <button id="copy-btn" type="button" class="copy-btn" aria-label="Copiar HEX al portapapeles">Copiar HEX</button>
     </p>
-  </div>
+    <p class="counter" id="counter">Cambios: 0</p>
+  </main>
 
   <script src="script.js"></script>
 </body>
